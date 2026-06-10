@@ -330,6 +330,7 @@ function renderHistory() {
   els.historyList.innerHTML = "";
   if (!state.history.length) {
     const empty = document.createElement("li");
+    empty.className = "history-empty";
     empty.innerHTML = "<strong>저장 기록 없음</strong><span>오늘 값을 저장하면 추세가 그려집니다.</span>";
     els.historyList.append(empty);
     return;
