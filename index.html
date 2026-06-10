@@ -10,16 +10,42 @@
   <body>
     <main class="shell">
       <header class="topbar">
-        <div>
-          <p class="eyebrow">Daily macro monitor</p>
+        <div class="brand-lockup">
+          <span class="brand-mark" aria-hidden="true">RH</span>
+          <div>
+            <p class="eyebrow">Daily macro monitor</p>
+            <p class="brand-name">Rate Hike Watch</p>
+          </div>
+        </div>
+        <div class="headline-copy">
           <h1>금리 인상 가능성 모니터</h1>
           <p class="lede">CME FedWatch, 국채금리, 물가, 고용 지표를 한 화면에서 확인하는 간단한 데일리 체크 페이지입니다.</p>
         </div>
         <div class="refresh-box">
+          <span class="status-dot"></span>
           <span id="freshness">데이터 대기 중</span>
           <button id="refreshBtn" type="button">새로고침</button>
         </div>
       </header>
+
+      <section class="market-strip" aria-label="데이터 범위">
+        <div>
+          <span>Coverage</span>
+          <strong id="coverageReadout">-</strong>
+        </div>
+        <div>
+          <span>Snapshot</span>
+          <strong id="snapshotReadout">-</strong>
+        </div>
+        <div>
+          <span>Model</span>
+          <strong>Market · Inflation · Labor · Fed</strong>
+        </div>
+        <div>
+          <span>Cadence</span>
+          <strong>Daily review</strong>
+        </div>
+      </section>
 
       <section class="summary-grid" aria-label="요약">
         <article class="score-card">
@@ -33,17 +59,17 @@
           </div>
         </article>
         <article class="mini-card">
-          <p class="panel-label">CME FedWatch</p>
+          <p class="panel-label">Futures pulse</p>
           <strong id="fedwatchReadout">입력 필요</strong>
           <span class="muted">연내 1회 이상 인상 확률</span>
         </article>
         <article class="mini-card">
-          <p class="panel-label">2년물 - 정책금리</p>
+          <p class="panel-label">Front-end gap</p>
           <strong id="twoYearGap">-</strong>
           <span class="muted">선물시장 긴축 기대 대용치</span>
         </article>
         <article class="mini-card">
-          <p class="panel-label">최대 압력</p>
+          <p class="panel-label">Top driver</p>
           <strong id="topDriver">-</strong>
           <span class="muted">현재 점수 기여도 기준</span>
         </article>

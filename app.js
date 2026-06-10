@@ -21,6 +21,8 @@ const state = {
 
 const els = {
   freshness: document.querySelector("#freshness"),
+  coverageReadout: document.querySelector("#coverageReadout"),
+  snapshotReadout: document.querySelector("#snapshotReadout"),
   refreshBtn: document.querySelector("#refreshBtn"),
   pressureScore: document.querySelector("#pressureScore"),
   pressureLabel: document.querySelector("#pressureLabel"),
@@ -223,6 +225,8 @@ function render() {
   els.scoreRing.style.setProperty("--score-color", scoreColor);
   els.pressureLabel.textContent = pressureLabel(overall.score);
   els.pressureCopy.textContent = pressureCopy(overall.score, overall.coverage);
+  els.coverageReadout.textContent = `${overall.coverage}%`;
+  els.snapshotReadout.textContent = snapshotDateText();
   els.fedwatchReadout.textContent = fedwatch === null ? "입력 필요" : `${formatNumber(fedwatch, 1)}%`;
   els.twoYearGap.textContent = Number.isFinite(twoYearGap) ? `${formatSigned(twoYearGap, 2)}%p` : "-";
   els.topDriver.textContent = top ? top.title : "-";
@@ -489,6 +493,14 @@ function latestFredDateText() {
     .filter(Boolean)
     .sort();
   return dates.length ? `최신 ${dates[dates.length - 1]}` : "FRED 날짜 없음";
+}
+
+function snapshotDateText() {
+  if (!state.snapshotUpdatedAt) return "대기 중";
+  return new Date(state.snapshotUpdatedAt).toLocaleDateString("ko-KR", {
+    month: "short",
+    day: "numeric"
+  });
 }
 
 function yearOverYear(id) {
